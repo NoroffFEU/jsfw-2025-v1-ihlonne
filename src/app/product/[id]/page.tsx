@@ -1,5 +1,3 @@
-export const dynamic = 'force-dynamic';
-
 import { notFound } from 'next/navigation';
 import { getProductById } from '@/lib/productApi';
 import Image from 'next/image';
@@ -11,9 +9,8 @@ export default async function ProductPage({
 }: {
   params: { id: string };
 }) {
-  const { id } = params;
+  const product = await getProductById(params.id);
 
-  const product = await getProductById(id);
   if (!product) return notFound();
 
   return (
