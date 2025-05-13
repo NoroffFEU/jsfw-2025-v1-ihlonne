@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 import { notFound } from 'next/navigation';
 import { getProductById } from '@/lib/productApi';
 import Image from 'next/image';
