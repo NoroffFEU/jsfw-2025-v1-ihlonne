@@ -6,11 +6,15 @@ import Image from 'next/image';
 import { MdVerified } from 'react-icons/md';
 import AddToCartButton from '@/components/AddToCartButton';
 
+interface ProductPageProps {
+  params: {
+    id: string;
+  };
+}
+
 export default async function ProductPage({
   params,
-}: {
-  params: { id: string };
-}) {
+}: ProductPageProps) {
   const { id } = params;
 
   const product = await getProductById(id);
