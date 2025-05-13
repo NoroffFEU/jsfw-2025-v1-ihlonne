@@ -1,23 +1,16 @@
-export const dynamic = 'force-dynamic';
-
 import { notFound } from 'next/navigation';
 import { getProductById } from '@/lib/productApi';
 import Image from 'next/image';
 import { MdVerified } from 'react-icons/md';
 import AddToCartButton from '@/components/AddToCartButton';
 
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
-
 export default async function ProductPage({
   params,
-}: ProductPageProps) {
-  const { id } = params;
+}: {
+  params: { id: string };
+}) {
+  const product = await getProductById(params.id);
 
-  const product = await getProductById(id);
   if (!product) return notFound();
 
   return (
